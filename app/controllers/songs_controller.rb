@@ -15,7 +15,7 @@ class SongsController < ApplicationController
       @song = Song.find(params[:song_id])
       render template: 'songs/show'
     else
-      flash[:alert] = "Song not found."
+      flash[:notice] = "Song not found."
       redirect_to 'artists/index'
     end
   end
