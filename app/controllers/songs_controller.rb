@@ -1,9 +1,6 @@
 class SongsController < ApplicationController
   def index
-    #@songs = Song.all
-    #@artist = Artist.find(params[:id])
-    #@songs = @artist.songs
-    if Artist.find(params[:artist_id])
+    if params[:artist_id]
     @songs = Artist.find(params[:artist_id]).songs
     render template: 'songs/index'
   else 
