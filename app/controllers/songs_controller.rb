@@ -3,8 +3,11 @@ class SongsController < ApplicationController
     #@songs = Song.all
     #@artist = Artist.find(params[:id])
     #@songs = @artist.songs
+    if Artist.find(params[:artist_id])
     @songs = Artist.find(params[:artist_id]).songs
     render template: 'songs/index'
+  else 
+    redirect_to artists_path
   end
 
   def show
