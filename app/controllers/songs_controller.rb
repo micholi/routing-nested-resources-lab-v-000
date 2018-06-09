@@ -9,8 +9,8 @@ class SongsController < ApplicationController
   end
 
   def show
-    if @artist = Artist.find_by_id(params[:artist_id])
-      @song = Song.find(params[:song_id])
+    if params[:artist_id] && @artist = Artist.find_by_id(params[:artist_id])
+      @song = Song.find(params[:id])
       render template: 'songs/show'
     else
       flash[:notice] = "Song not found."
