@@ -9,8 +9,13 @@ class SongsController < ApplicationController
   def show
     #@song = Song.find(params[:id])
     @artist = Artist.find(params[:id])
-    @song = Song.find(params[:song_id])
-    render template: 'songs/show'
+    if @artist
+      @song = Song.find(params[:song_id])
+      render template: 'songs/show'
+    else
+      redirect_to 'artists/index'
+      flash[:alert] = "Song not found."
+    end
   end
 
   def new
