@@ -16,7 +16,6 @@ class SongsController < ApplicationController
     elsif !@song
         flash[:notice] = "Song not found."
         redirect_to 'artists/index'
-    
     end
   end
 
