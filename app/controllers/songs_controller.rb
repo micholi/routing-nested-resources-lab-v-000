@@ -1,12 +1,12 @@
 class SongsController < ApplicationController
   def index
-    if params[:artist_id] && @artist = Artist.find_by_id(params[:artist_id])
+    if !params[:artist_id]
+      @songs = Song.all
+    elsif params[:artist_id] && @artist = Artist.find_by_id(params[:artist_id])
       @songs = @artist.songs
     elsif !@artist
       flash[:alert] = "Artist not found." 
       redirect_to artists_path
-    elsif !params[:artist_id]
-      @songs = Song.all
     end
   end
 
